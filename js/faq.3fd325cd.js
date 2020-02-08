@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["faq"],{"0b2e":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},s=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"faq"},[t("h1",[e._v("This is FAQ page")])])}],c={name:"FAQ",components:{}},i=c,r=t("2877"),l=Object(r["a"])(i,a,s,!1,null,"4caa5a30",null);n["default"]=l.exports}}]);
+//# sourceMappingURL=faq.3fd325cd.js.map
