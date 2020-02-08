@@ -2,6 +2,10 @@
 
 Status: IN PROGRESS
 
+```bash
+npx vue create vua-app
+```
+
 ## Compiles and hot-reloads for development
 
 ```
