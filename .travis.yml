@@ -1,0 +1,70 @@
+notifications:
+  email: false
+git:
+  quiet: true
+  depth: false
+language: python
+python: 3.8
+node_js: lts/*
+addons:
+  apt:
+    update: false
+    packages:
+      - curl
+install: true
+before_install:
+  - |
+    if [ ! -f ${HOME}/.local/daggerok/bash-functions/master/main.bash ] ; then
+      mkdir -p ${HOME}/.local/daggerok/bash-functions/master
+      curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash
+    fi
+    source ${HOME}/.local/daggerok/bash-functions/master/main.bash
+    stop_any 3000 5000
+  - |
+    export PATH=$HOME/.local/bin:$PATH
+    python -m pip install --upgrade pip setuptools pyopenssl
+    python -m pip install --upgrade httpie
+jobs:
+  include:
+    - stage: test
+      name: vue
+      env:
+        - SUB_PROJECT=vue-app
+      before_script:
+        - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+        - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+        - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
+        - wait_for 8080
+      script:
+        - http :8080
+      after_script: cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
+    - stage: deploy
+      name: GitHub Pages
+      env:
+        - SUB_PROJECT=vue-app
+        - secure: "Gskys/Bf/wg/uadN5CMUXyWaPWyF+iqviNjpc1Va7N5Aqlag5mt9jvRnq7u5cNzNW22ivLAtvyGHKVB01bsbNjsqt7o7Gfka7/JMd06FsFTA0KVOft8RnAY8a/Nd+95r/nuYB3Gn33+s/PbqnUfjrEJSzVTaCyKVYJuw6O0cPrSuookkUyDE2o/teuEqyjwCLDS0TuQMUEIyW7+UJXhbaiSC5xs2wbQ65fz6qhqG17P0Hinp0h8CTiOdGbTtbBvYroNFYNl99TvIAecjc3xTj13PCXwssBuMt/OOtTMQaEJk/2/wNeVUcxrL2L8D9ehN9bRpFwZDTz7xSXATYVK9c8xKQ+lGHD7WzqS8obe1V6ODkbP/lxQWgnx+4FWVpORO4+MK8i8rKT3T6Ik7q1kj5bRGMAWrOi89IC4Bzi595COc+gSTgIANyhM88n0zDGIysYo6OxonHlVUz4x4knrQApMfE8zDD3wrpzMIpaLW96rDHikMijkANTTZnRIhZARGTJZq1P9/XTwdCIX7hpqI0sS1VtHjpV1GLzGD5cF/Psa1BAv3uz8iGTy4hpSZUsmhxXIshgGOmESJnURGNDhQgbFfktmpDhjJvsCRHBxwFR8n5pAvmdc3LujFDp01PaBfxbk4yZLw6YoKdU77U49uohnZQT/9qhR2GPzstveo9fc="
+      script: skip
+      before_deploy:
+        - set -e
+        - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+        - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
+      deploy: &pages
+        provider: pages
+        skip-cleanup: true
+        keep-history: true
+        target_branch: gh-pages
+        github-token: "$GITHUB_TOKEN"
+        # vue / angular: dist
+        local-dir: $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist
+        ## react: build
+        # local-dir: $TRAVIS_BUILD_DIR/$SUB_PROJECT/build
+        on:
+          branch: master
+          condition: "$TRAVIS_PULL_REQUEST = false"
+cache:
+  npm: true
+  pip: true
+  packages: true
+  directories:
+    - ~/.n*
+    - ~/.local/daggerok

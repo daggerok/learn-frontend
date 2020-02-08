@@ -1,0 +1,53 @@
+{
+  "name": "vue-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "pm2 start 'npm run serve' --name app",
+    "restart": "pm2 restart app",
+    "stop": "pm2 kill",
+    "logs": "pm2 logs",
+    "gh": "cross-env BASE_URL='/learn-frontend/' vue-cli-service build"
+  },
+  "keywords": [
+    "pm2",
+    "vue",
+    "bulma",
+    "fontawesome",
+    "fontawesome-free",
+    "cross-env",
+    "gh-pages",
+    "base",
+    "baseHref",
+    "basePath",
+    "publicPath"
+  ],
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.12.1",
+    "bulma": "0.8.0",
+    "core-js": "3.6.4",
+    "vue": "2.6.11",
+    "vue-router": "3.1.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "4.2.2",
+    "@vue/cli-plugin-router": "4.2.2",
+    "@vue/cli-service": "4.2.2",
+    "cross-env": "7.0.0",
+    "node-sass": "4.13.1",
+    "pm2": "4.2.3",
+    "sass-loader": "8.0.2",
+    "vue-template-compiler": "2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "babel": {
+    "presets": [
+      "@vue/cli-plugin-babel/preset"
+    ]
+  }
+}
