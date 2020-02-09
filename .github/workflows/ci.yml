@@ -32,13 +32,8 @@ jobs:
           env
           cd $GITHUB_WORKSPACE/react-app && npm i
       - name: Run server
-        shell: bash
-        run: |
-          env
-          cd $GITHUB_WORKSPACE/react-app && npm start &
+        run: cd $GITHUB_WORKSPACE/react-app && npm start &
       - name: Wait for server
-        shell: bash
         run: wait-port 3000
       - name: Run CI tests
-        shell: bash
         run: http get :3000

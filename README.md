@@ -1,4 +1,4 @@
-# learn-frontend [![Build Status](https://travis-ci.org/daggerok/learn-frontend.svg?branch=master)](https://travis-ci.org/daggerok/learn-frontend)
+# learn-frontend [![Build Status](https://travis-ci.org/daggerok/learn-frontend.svg?branch=master)](https://travis-ci.org/daggerok/learn-frontend) [![CI](https://github.com/daggerok/learn-frontend/workflows/CI/badge.svg)](https://github.com/daggerok/learn-frontend/actions)
 Learn and compare: Vue, React and Angular
 
 Status: IN PROGRESS
