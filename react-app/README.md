@@ -1,5 +1,10 @@
 create-app  [![Build Status](https://travis-ci.org/daggerok/learn-frontend.svg?branch=master)](https://travis-ci.org/daggerok/learn-frontend)
 
+* [react + font awesome](https://www.digitalocean.com/community/tutorials/how-to-use-font-awesome-5-with-react)
+* [react + font awesome github repo](https://github.com/FortAwesome/react-fontawesome)
+
+<!--
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -66,3 +71,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+-->

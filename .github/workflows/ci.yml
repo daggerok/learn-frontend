@@ -28,10 +28,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Run install
         shell: bash
-        run: cd $GITHUB_WORKSPACE/learn-frontend/react-app && npm i
+        run: |
+          env
+          cd $GITHUB_WORKSPACE/react-app && npm i
       - name: Run server
         shell: bash
-        run: cd $GITHUB_WORKSPACE/learn-frontend/react-app && npm start &
+        run: |
+          env
+          cd $GITHUB_WORKSPACE/react-app && npm start &
       - name: Wait for server
         shell: bash
         run: wait-port 3000

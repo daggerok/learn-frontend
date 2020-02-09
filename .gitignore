@@ -2,6 +2,13 @@
 !.idea/
 .idea/*
 !.idea/runConfigurations/
+*.iml
+*.ipr
+*.iws
+*.log*
+
+react-app/src/*.css
+
 pids
 logs
 node_modules
