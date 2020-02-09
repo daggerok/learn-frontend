@@ -74,7 +74,6 @@ jobs:
       script: skip
       before_deploy:
         - set -e
-        - npm install npm@latest -g
         - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
         - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
       deploy: &pages
@@ -92,10 +91,10 @@ jobs:
         #local-dir: $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/$SUB_PROJECT
         #react:
         local-dir: $TRAVIS_BUILD_DIR/$SUB_PROJECT/build
-cache:
-  npm: true
-  pip: true
-  packages: true
-  directories:
-    - ~/.n*
-    - ~/.local/daggerok
+#cache:
+#  npm: true
+#  pip: true
+#  packages: true
+#  directories:
+#    - ~/.n*
+#    - ~/.local/daggerok
