@@ -25,9 +25,7 @@
     "stop": "pm2 kill",
     "logs": "pm2 logs",
     "gh": "cross-env PUBLIC_URL='/learn-frontend/' npm run build",
-    "postgh": "npm-run-all postgh:*",
-    "postgh:nojekyll": "ncp ./build/index.html ./build/.nojekyll",
-    "postgh:404": "ncp ./build/index.html ./build/404.html"
+    "postgh": "ncp ./build/index.html ./build/404.html"
   },
   "eslintConfig": {
     "extends": "react-app"
