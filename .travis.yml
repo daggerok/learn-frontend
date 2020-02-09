@@ -76,7 +76,7 @@ jobs:
       before_deploy:
         - set -e
         - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
-        - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
+        - npm run gh || echo 'oops?'
       deploy: &pages
         provider: pages
         skip-cleanup: true
