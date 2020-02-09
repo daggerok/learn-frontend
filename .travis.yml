@@ -67,6 +67,7 @@ jobs:
     - stage: deploy
       name: GitHub Pages
       env:
+        - CI=true
         #- SUB_PROJECT=vue-app
         - SUB_PROJECT=react-app
 #        - SUB_PROJECT=angular-app
